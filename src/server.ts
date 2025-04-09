@@ -19,7 +19,6 @@ import * as SocketMDL from "./services/Socket/model";
 import { MakeMoveUsecase } from "./usecases/MakeMoveUsecase";
 import { LeaveRoomUsecase } from "./usecases/LeaveRoomUsecase";
 import * as RoomMDL from "./services/Room/model";
-import * as PlayerMDL from "./services/Player/model";
 import { DestroyRoomUsecase } from "./usecases/DestroyRoomUsecase";
 
 // MongoDB connection
@@ -64,7 +63,19 @@ app.get("/", (req, res) => {
 
 app.post("/api/rooms/new", async (req, res) => {});
 
-app.get("/api/rooms", async (req, res) => {});
+app.get("/api/rooms", async (req, res) => {
+  let page = 1;
+
+  if (req.headers.page as string) {
+    page = parseInt(req.headers.page as string);
+  }
+
+  const rooms = await RoomMDL.getPublicRooms({
+    page: page,
+  });
+
+  res.send(rooms);
+});
 
 //// SOCKET
 ////

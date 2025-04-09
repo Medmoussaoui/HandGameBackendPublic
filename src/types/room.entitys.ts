@@ -16,3 +16,13 @@ export interface CreateRoomDTO {
   visibility: RoomVisibility;
   playerId: string;
 }
+
+export interface PublicRoomEntity {
+  roomId: string;
+  name: string;
+  maxPlayers: number;
+  visibility: RoomVisibility;
+  owner: string;
+  joinedPlayers: number;
+  createdAt: Date;
+}

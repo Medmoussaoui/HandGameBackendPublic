@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+// const MONGODB_URI =
+//   "mongodb+srv://rooot:moussaouimohamedtooop@cluster0.6ht6l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 const MONGODB_URI = "mongodb://localhost:27017/handgame";
 
 export const initialMongoDBConnection = () => {
